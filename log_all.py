@@ -59,7 +59,7 @@ cpu_temps = [get_cpu_temperature()] * 5
 
 delay = 0.5  # Debounce the proximity tap
 mode = 0     # The starting mode
-log_length = 2
+log_length = 20
 
 values = {
     k : deque(maxlen=log_length)
