@@ -93,6 +93,6 @@ while True:
     values["pm2.5_ug/m3"].append(particulates.pm_ug_per_m3(2.5))
     values["pm10_ug/m3"].append(particulates.pm_ug_per_m3(10))
     values["time_s"].append(datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"))
-    print("all readings: ", {k: v[0] for k, v in values})
+    print("all readings: ", {k: v[0] for k, v in values.items()})
 
 
