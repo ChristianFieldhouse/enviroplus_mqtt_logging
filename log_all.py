@@ -108,7 +108,7 @@ while True:
         time.sleep(secs_between_readings)
     print("\npublishing to mqtt broker ...")
     for k, v in values.items():
-        mqtt.publish("enviroplus/"+k, sum(v)/len(v), retain=True)
+        client.publish("enviroplus/"+k, sum(v)/len(v), retain=True)
 
 
 
