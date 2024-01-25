@@ -37,6 +37,7 @@ def on_connect(client, userdata, flags, rc):
 
 client = mqtt.Client()
 client.on_connect = on_connect
+client.username_pw_set("scales", "scales_password")
 
 client.connect("christianfieldhouse.duckdns.org", 1883, 60)
 
