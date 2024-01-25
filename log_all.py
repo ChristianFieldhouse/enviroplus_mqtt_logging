@@ -58,9 +58,10 @@ cpu_temps = [get_cpu_temperature()] * 5
 
 delay = 0.5  # Debounce the proximity tap
 mode = 0     # The starting mode
+log_length = 20
 
 values = {
-    k : deque(maxlen=20)
+    k : deque(maxlen=log_length)
     for k in [
         "proximity_",
         "temperature_C",
@@ -79,20 +80,25 @@ values = {
 
 
 while True:
-    values["proximity_"].append(ltr559.get_proximity())
-    values["temperature_C"].append(bme280.get_temperature())
-    values["pressure_hPa"].append(bme280.get_pressure())
-    values["humidity_%"].append(bme280.get_humidity())
-    values["light_Lux"].append(ltr559.get_lux())
-    gas_data = gas.read_all()
-    values["oxidised_k0"].append(gas_data.oxidising / 1000)
-    values["reduced_k0"].append(gas_data.reducing / 1000)
-    values["nh3_k0"].append(gas_data.nh3 / 1000)
-    particulates = pms5003.read()
-    values["pm1_ug/m3"].append(particulates.pm_ug_per_m3(1.0))
-    values["pm2.5_ug/m3"].append(particulates.pm_ug_per_m3(2.5))
-    values["pm10_ug/m3"].append(particulates.pm_ug_per_m3(10))
-    values["time_s"].append(datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"))
-    print("all readings: ", {k: v[0] for k, v in values.items()})
+    for repeat in range(log_length):
+        values["proximity_"].append(ltr559.get_proximity())
+        values["temperature_C"].append(bme280.get_temperature())
+        values["pressure_hPa"].append(bme280.get_pressure())
+        values["humidity_%"].append(bme280.get_humidity())
+        values["light_Lux"].append(ltr559.get_lux())
+        gas_data = gas.read_all()
+        values["oxidised_k0"].append(gas_data.oxidising / 1000)
+        values["reduced_k0"].append(gas_data.reducing / 1000)
+        values["nh3_k0"].append(gas_data.nh3 / 1000)
+        particulates = pms5003.read()
+        values["pm1_ug/m3"].append(particulates.pm_ug_per_m3(1.0))
+        values["pm2.5_ug/m3"].append(particulates.pm_ug_per_m3(2.5))
+        values["pm10_ug/m3"].append(particulates.pm_ug_per_m3(10))
+        values["time_s"].append(datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"))
+    print("all readings: ", {
+        k: sum(v) / len(v)
+        for k, v in values.items()
+        if k != "time_s"
+    })
 
 
