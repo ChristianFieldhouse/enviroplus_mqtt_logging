@@ -58,7 +58,7 @@ cpu_temps = [get_cpu_temperature()] * 5
 
 delay = 0.5  # Debounce the proximity tap
 mode = 0     # The starting mode
-log_length = 20
+log_length = 2
 
 values = {
     k : deque(maxlen=log_length)
@@ -107,7 +107,7 @@ while True:
         )
         time.sleep(secs_between_readings)
     print("\npublishing to mqtt broker ...")
-    for k, v in values.items:
+    for k, v in values.items():
         mqtt.publish("enviroplus/"+k, sum(v)/len(v), retain=True)
 
 
