@@ -78,6 +78,7 @@ values = {
     ]
 }
 
+secs_between_readings = 1
 
 while True:
     for repeat in range(log_length):
@@ -95,10 +96,19 @@ while True:
         values["pm2.5_ug/m3"].append(particulates.pm_ug_per_m3(2.5))
         values["pm10_ug/m3"].append(particulates.pm_ug_per_m3(10))
         values["time_s"].append(datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"))
-    print("all readings: ", {
-        k: sum(v) / len(v)
-        for k, v in values.items()
-        if k != "time_s"
-    })
+        print(
+            "all readings: ",
+            {
+                k: sum(v) / len(v)
+                for k, v in values.items()
+                if k != "time_s"
+            },
+            end=" "*100 + "\r",
+        )
+        time.sleep(secs_between_readings)
+    print("\npublishing to mqtt broker ...")
+    for k, v in values.items:
+        mqtt.publish("enviroplus/"+k, sum(v)/len(v), retain=True)
+
 
 
