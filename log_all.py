@@ -82,7 +82,7 @@ while True:
     values["proximity_"].append(ltr559.get_proximity())
     values["temperature_C"].append(bme280.get_temperature())
     values["pressure_hPa"].append(bme280.get_pressure())
-    values["humididy_%"].append(bme280.get_humidity())
+    values["humidity_%"].append(bme280.get_humidity())
     values["light_Lux"].append(ltr559.get_lux())
     gas_data = gas.read_all()
     values["oxidised_k0"].append(gas_data.oxidising / 1000)
