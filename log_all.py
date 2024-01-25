@@ -86,7 +86,7 @@ while True:
     values["light_Lux"].append(ltr559.get_lux())
     gas_data = gas.read_all()
     values["oxidised_k0"].append(gas_data.oxidising / 1000)
-    values["reducing_k0"].append(gas_data.reducing / 1000)
+    values["reduced_k0"].append(gas_data.reducing / 1000)
     values["nh3_k0"].append(gas_data.nh3 / 1000)
     particulates = pms5003.read()
     values["pm1_ug/m3"].append(particulates.pm_ug_per_m3(1.0))
