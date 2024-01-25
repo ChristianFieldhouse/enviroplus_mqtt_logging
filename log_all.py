@@ -78,8 +78,7 @@ values = {
         "time_s",
     ]
 }
-
-secs_between_readings = 5
+secs_between_readings = 1
 
 while True:
     for repeat in range(log_length):
