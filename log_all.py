@@ -109,11 +109,14 @@ while True:
     print("\npublishing to mqtt broker ...")
     for k, v in values.items():
         if k != "time_s":
-            client.publish(
-                topic=f"enviroplus/{k}",
-                payload=str(sum(v)/len(v)),
-                retain=True,
-            )
+            try:
+                client.publish(
+                    topic=f"enviroplus/{k}",
+                    payload=str(sum(v)/len(v)),
+                    retain=True,
+                )
+            except:
+                print("mqtt publish failed")
 
 
 
