@@ -91,10 +91,13 @@ while True:
         values["oxidised_k0"].append(gas_data.oxidising / 1000)
         values["reduced_k0"].append(gas_data.reducing / 1000)
         values["nh3_k0"].append(gas_data.nh3 / 1000)
-        particulates = pms5003.read()
-        values["pm1_ug/m3"].append(particulates.pm_ug_per_m3(1.0))
-        values["pm2.5_ug/m3"].append(particulates.pm_ug_per_m3(2.5))
-        values["pm10_ug/m3"].append(particulates.pm_ug_per_m3(10))
+        try:
+            particulates = pms5003.read()
+            values["pm1_ug/m3"].append(particulates.pm_ug_per_m3(1.0))
+            values["pm2.5_ug/m3"].append(particulates.pm_ug_per_m3(2.5))
+            values["pm10_ug/m3"].append(particulates.pm_ug_per_m3(10))
+        except:
+            print("pm5003 failure")
         values["time_s"].append(datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"))
         print(
             "all readings: ",
