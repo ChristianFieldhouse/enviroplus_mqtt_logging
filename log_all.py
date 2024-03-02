@@ -102,7 +102,7 @@ while True:
         print(
             "all readings: ",
             {
-                k: sum(v) / len(v)
+                k: 0 if len(v) == 0 else sum(v) / len(v)
                 for k, v in values.items()
                 if k != "time_s"
             },
