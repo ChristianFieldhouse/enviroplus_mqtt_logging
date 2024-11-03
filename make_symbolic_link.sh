@@ -1,0 +1,1 @@
+sudo ln -s /home/christian/Documents/enviroplus_mqtt_logging/enviroplus_logging.service /lib/systemd/system/enviroplus_logging.service
