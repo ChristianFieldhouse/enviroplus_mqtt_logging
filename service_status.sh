@@ -1,0 +1,1 @@
+sudo systemctl status enviroplus_logging.service
