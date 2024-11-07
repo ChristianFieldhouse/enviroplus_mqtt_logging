@@ -1,1 +1,1 @@
-sudo systemctl stop enviroplus_logging.service
+sudo systemctl stop enviroplus_logging

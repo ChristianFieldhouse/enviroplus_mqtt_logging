@@ -1,1 +1,1 @@
-sudo systemctl start enviroplus_logging.service
+sudo systemctl start enviroplus_logging
