@@ -4,8 +4,8 @@ After=multi-user.target
 
 [Service]
 Type=idle
-ExecStart=/home/christian/.virtualenvs/pimoroni/bin/python /home/christian/Documents/enviroplus_mqtt_logging/log_all.py > /home/christian/Documents/enviroplus_mqtt_logging/log_all.log
-WorkingDirectory=/home/christian/Documents/enviroplus_mqtt_logging
+ExecStart=/home/christian/.virtualenvs/pimoroni/bin/python /home/christian/enviroplus_mqtt_logging/log_all.py > /home/christian/enviroplus_mqtt_logging/log_all.log
+WorkingDirectory=/home/christian/enviroplus_mqtt_logging
 User=christian
 
 [Install]
