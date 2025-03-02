@@ -29,5 +29,13 @@ To set everything up:
 
 ```cat enviroplus_logging.service```
 
-6) make a symbolic link to the .service file, enable, and start it
+6) make a symbolic link to the .service file, enable, and start it. Again, sorry, the symbolic link is hard coded to /home/christian/*
+
+```chmod +x <file with permission denied>.sh```
+
+```./make_symbolic_link.sh```
+
+```./enable_service.sh```
+
+```./start_service.sh```
 
