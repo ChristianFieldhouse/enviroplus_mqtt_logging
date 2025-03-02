@@ -10,12 +10,15 @@ To set everything up:
 2) Install Enviro+ Python Library (allowing install.sh to creat a new venv)
 
 ```git clone https://github.com/pimoroni/enviroplus-python```
+
 ```cd enviroplus-python```
+
 ```./install.sh```
 
 3) Clone this repo
 
 ```cd ..```
+
 ```git clone https://github.com/ChristianFieldhouse/enviroplus_mqtt_logging.git```
 
 4) Reboot the pi zero, wait a minute, and ssh back into the pi zero
