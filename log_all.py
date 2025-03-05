@@ -40,6 +40,7 @@ client.on_connect = on_connect
 client.username_pw_set("scales", "scales_password")
 
 client.connect("192.168.4.77", 1883, 60)
+client.loop_start()
 
 # BME280 temperature/pressure/humidity sensor
 bme280 = BME280()
