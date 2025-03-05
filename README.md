@@ -1,7 +1,5 @@
 This code can be put on a pi zero connected to the enviro+ board. It passes all the data to a local mqtt broker.
 
-As of 2nd March 2025, I haven't got this to run reliably - the pi goes dark on the network after some time.
-
 To set everything up:
 1) Flash the pi zero with network credentials and ssh into it
 
